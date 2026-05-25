@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.mapper.ClazzsMapper">
+    <insert id="addClazzs">
+        insert into telers.clazz(name, room, begin_date, end_date, master_id, subject, create_time, update_time)
+        values (#{name},#{room},#{beginDate},#{endDate},#{masterId},#{subject},#{createTime},#{updateTime})
+    </insert>
+    <update id="updateClazz">
+        update telers.clazz
+        set name=#{name},
+            room=#{room},
+            begin_date=#{beginDate},
+            end_date=#{endDate},
+            master_id=#{masterId},
+            subject=#{subject},
+            update_time=#{updateTime}
+        where id = #{id}
+    </update>
+    <delete id="deleteClazz">
+        delete
+        from telers.clazz
+        where id = #{id}
+    </delete>
+
+
+    <select id="selectClazzs" resultType="com.java.pojo.Clazz">
+        select c.*,e.name master_name from telers.clazz c left join telers.emp e on c.master_id=e.id
+        <where>
+            <if test="name != null">
+                and c.name like concat('%',#{name},'%')
+            </if>
+        <if test="begin!=null">
+            and c.begin_date between #{begin} and #{end}
+        </if>
+        <if test="end !=null">
+            and c.end_date between #{begin} and #{end}
+        </if>
+        </where>
+    </select>
+    <select id="selectClazz" resultType="com.java.pojo.Clazz">
+        SELECT c.*,e.name master_name from telers.clazz c left join telers.emp e on c.master_id=e.id where c.id=#{id}
+    </select>
+</mapper>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.mapper.EmpMapper">
+    <insert id="addEmp" useGeneratedKeys="true" keyProperty="id">
+        insert into telers.emp(username, name, gender, phone, job, salary, image, entry_date, dept_id, create_time,
+                               update_time)
+        values (#{username}, #{name}, #{gender}, #{phone}, #{job}, #{salary}, #{image}, #{entryDate}, #{deptId},
+                #{createTime}, #{updateTime});
+    </insert>
+
+
+
+    <update id="update">
+        update telers.emp
+        <set>
+            <if test="username!=''and username!=null">
+                username=#{username},
+            </if>
+            <if test="name!=null">
+                name=#{name},
+            </if>
+            <if test="gender!=null">
+                gender= #{gender},
+            </if>
+            <if test="phone!=null">
+                phone= #{phone},
+            </if>
+            <if test="job!=null">
+                job= #{job},
+
+            </if>
+            <if test="salary!=null">
+                salary= #{salary},
+            </if>
+            <if test="image!=null">
+                image= #{image},
+            </if>
+            <if test="entryDate!=null">
+                entry_date= #{entryDate},
+            </if>
+            <if test="deptId!=null">
+                dept_id= #{deptId},
+            </if>
+            <if test="createTime!=null">
+                create_time= #{createTime},
+            </if>
+            <if test="updateTime!=null">
+                update_time= #{updateTime}
+            </if>
+            where id=#{id}
+        </set>
+    </update>
+
+
+
+    <delete id="deleteEmp">
+        delete from telers.emp where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+
+    <select id="page" resultType="com.java.pojo.Emp">
+        select e.*, d.name dept_name from emp e left join dept d on d.id =e.dept_id
+        <where>
+            <if test="name!=null">and e.name like concat('%',#{name},'%')</if>
+            <if test="end!=null and begin!=null">and e.entry_date between #{begin} and #{end}</if>
+            <if test="gender!=null">and e.gender=#{gender}</if>
+            order by update_time desc
+
+        </where>
+    </select>
+
+    <!--
+
+    * 查询员工信息
+    -->
+    <resultMap id="empResult" type="com.java.pojo.Emp">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="name" property="name"/>
+        <result column="gender" property="gender"/>
+        <result column="phone" property="phone"/>
+        <result column="salary" property="salary"/>
+        <result column="job" property="job"/>
+        <result column="image" property="image"/>
+        <result column="entry_date" property="entryDate"/>
+        <result column="dept_id" property="deptId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+
+        <collection property="exprList" ofType="com.java.pojo.EmpExpr">
+            <result column="expr_id" property="id"/>
+            <result column="company" property="company"/>
+            <result column="begin" property="begin"/>
+            <result column="exper_job" property="job"/>
+            <result column="end" property="end"/>
+            <result column="emp_id" property="empId"/>
+        </collection>
+    </resultMap>
+
+    <!--
+     * 根据id查询员工信息
+    -->
+    <select id="select" resultMap="empResult">
+        select e.*,   ex.id as expr_id, ex.emp_id,ex.begin,ex.job exper_job,ex.end,ex.company
+        from emp e
+                 left join emp_expr ex on e.id = ex.emp_id
+        where e.id = #{id};
+
+    </select>
+
+
+</mapper>

@@ -1,0 +1,20 @@
+
+spring:
+  application:
+    name: telers-project # 项目名称
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource #数据库连接池
+    url: jdbc:mysql://localhost:3306/telers #数据库连接地址
+    username: root #数据库用户名
+    password: hyw070318. #数据库密码
+    driver-class-name: com.mysql.cj.jdbc.Driver #数据库驱动
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #日志实现
+    map-underscore-to-camel-case: true #驼峰命名赋值
+  mapper-locations: classpath:mapper/*.xml #Mapper文件位置
+
+
+jwt:
+  secret: SUxPVkVZT1XmiJHnmoTnmb3mnIjlhYk= #JWT密钥
+  expire: 1800000 #JWT过期时间
