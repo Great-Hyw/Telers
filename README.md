@@ -124,16 +124,3 @@ labels: 'documentation'
 
 ---
 
-## 🛠️ 代码质量提示
-
-1.  **命名规范问题**：
-    - `Result.susses` 方法名拼写错误，应为 `success`。
-    - `DeptService.deleteEmp` 方法名与实际业务（删除部门）不符，建议改为 `deleteDept`。
-    - `EmpC` 作为查询条件类，命名较为模糊，建议改为 `EmpQuery`。
-
-2.  **潜在 Bug**：
-    - `LoginImpl` 中导入了 `JwtUtil`，但部分代码片段显示可能存在拼写错误（如 `CreatToken` 首字母大写），需确保与工具类实际方法名一致。
-    - `StudentService` 只有查询接口，若前端需要增删改功能，后端需补充实现。
-
-3.  **日志记录**：
-    - `ClazzsImpl` 中使用了 `@Slf4j` 注解，但在 `addClazzs` 等方法中硬编码了 `log.info`，建议统一使用 Lombok 提供的 `log` 对象。
