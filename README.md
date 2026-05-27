@@ -3,7 +3,7 @@
 ---
 基于***spring boot***的一个javaweb项目，用于老师进行对班级和学生的管理 
 
-未来会继续改进
+
 name: Project Documentation
 description: 基于Spring Boot的后台管理系统API接口文档与设计说明
 labels: 'documentation'
@@ -123,4 +123,4 @@ labels: 'documentation'
 - **JwtUtil**：负责 Token 的生成 (`CreatToken`) 和解析 (`praseToken`)，密钥和过期时间由配置文件注入。
 
 ---
-
+未来会继续改进
