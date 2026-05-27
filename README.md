@@ -27,7 +27,7 @@ labels: 'documentation'
   - [4. 班级管理 (Class)](#4-class)
   - [5. 学生管理 (Student)](#5-student)
 - [数据模型说明](#-数据模型说明)
-- [代码质量提示](#-代码质量提示)
+
 
 ---
 
