@@ -13,27 +13,27 @@ public class Result {
     private Integer code;
 
 
-    public static Result susses(){
-    	Result result = new Result();
-        result.msg="susses";
-        result.code=1;
-    	return result;
-    }
-    public static Result susses(Object data){
+    public static Result susses() {
         Result result = new Result();
-        result.msg="susses";
-        result.code=1;
-        result.data=data;
-    	return result;
-    }
-    public static Result error(String msg){
-    	Result result = new Result();
-        result.msg=msg;
-        result.code=0;
-    	return result;
+        result.msg = "susses";
+        result.code = 1;
+        return result;
     }
 
+    public static Result susses(Object data) {
+        Result result = new Result();
+        result.msg = "susses";
+        result.code = 1;
+        result.data = data;
+        return result;
+    }
 
+    public static Result error(String msg) {
+        Result result = new Result();
+        result.msg = msg;
+        result.code = 0;
+        return result;
+    }
 
 
 }

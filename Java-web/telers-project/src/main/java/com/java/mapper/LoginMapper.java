@@ -6,8 +6,8 @@ import org.apache.ibatis.annotations.Select;
 
 
 /*
-* 登录Mapper
-* */
+ * 登录Mapper
+ * */
 @Mapper
 public interface LoginMapper {
     @Select("select id,username,name from telers.emp where username=#{username} and password=#{password} ")

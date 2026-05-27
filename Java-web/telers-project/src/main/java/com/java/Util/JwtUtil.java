@@ -1,4 +1,4 @@
-package com.java.JWT;
+package com.java.Util;
 
 
 import io.jsonwebtoken.Claims;
@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-
 import javax.crypto.SecretKey;
 import java.util.Date;
 import java.util.HashMap;
@@ -16,10 +15,10 @@ import java.util.Map;
 
 
 /*
-*
-* 令牌的生成和解析
-*
-* */
+ *
+ * 令牌的生成和解析
+ *
+ * */
 @Slf4j
 @Component
 public class JwtUtil {
@@ -44,7 +43,7 @@ public class JwtUtil {
         return token;
     }
 
-    public Claims praseToken(String token) throws  Exception{
+    public Claims praseToken(String token) throws Exception {
         key = Keys.hmacShaKeyFor(secret.getBytes());
         return Jwts.parser()//创建解析器
                 .verifyWith(key)//设置密钥

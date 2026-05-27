@@ -13,11 +13,12 @@ import java.util.List;
 public class DeptController {
     @Autowired
     private DeptService deptService;
-/*
-*
-* 查询所有部门
-*
-* */
+
+    /*
+     *
+     * 查询所有部门
+     *
+     * */
     @RequestMapping("/depts")
     public Result SelectAll() {
         System.out.println("ssss");
@@ -25,26 +26,26 @@ public class DeptController {
         return Result.susses(list);
     }
 
-/*
-*
-* 删除部门
-*
-* */
+    /*
+     *
+     * 删除部门
+     *
+     * */
     @DeleteMapping("/depts")//删除部门
     public Result deleteEmp(Integer id) {
 
         deptService.deleteEmp(id);
-        System.out.println(id+"a");
+        System.out.println(id + "a");
         return Result.susses();
     }
 
-/*
-*
-* 添加部门
-*
-* */
+    /*
+     *
+     * 添加部门
+     *
+     * */
     @PostMapping("/depts")//添加部门
-    public Result addDept(@RequestBody Dept dept){
+    public Result addDept(@RequestBody Dept dept) {
 
         deptService.addDept(dept);
         System.out.println(dept.getName());
@@ -53,31 +54,28 @@ public class DeptController {
 
     }
 
-/*
-*
-*
-* 根据id查询部门信息
-* */
+    /*
+     *
+     *
+     * 根据id查询部门信息
+     * */
     @GetMapping("/depts/{id}")
-    public Result goInfo(@PathVariable Integer id){
-        Dept dept=deptService.goInfo(id);
+    public Result goInfo(@PathVariable Integer id) {
+        Dept dept = deptService.goInfo(id);
         System.out.println(dept.toString());
         return Result.susses(dept);
     }
 
-/*
-*
-* 修改部门信息
-*
-* */
-    public Result updateDept(@RequestBody Dept dept){
+    /*
+     *
+     * 修改部门信息
+     *
+     * */
+    public Result updateDept(@RequestBody Dept dept) {
         deptService.UpdateDept(dept);
 
         return Result.susses();
     }
-
-
-
 
 
 }

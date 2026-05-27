@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /*
-*
-* @Description: 对学生信息查询
-* */
+ *
+ * @Description: 对学生信息查询
+ * */
 @RestController
 @RequestMapping("/students")
 public class StudentController {

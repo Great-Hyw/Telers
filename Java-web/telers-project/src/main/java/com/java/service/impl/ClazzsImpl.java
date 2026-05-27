@@ -18,9 +18,9 @@ import java.util.List;
 
 
 /*
-* 班级业务实现类
-*
-* */
+ * 班级业务实现类
+ *
+ * */
 @Slf4j
 @Service
 public class ClazzsImpl implements Clazzs {
@@ -33,20 +33,18 @@ public class ClazzsImpl implements Clazzs {
         PageHelper.startPage(empC.getPage(), empC.getPageSize());
         List<Clazz> page1 = clazzsMapper.selectClazzs(empC);
         LocalDate now = LocalDate.now();
-        for(var i: page1){
-            if(i.getBeginDate().isBefore(now)&&i.getEndDate().isAfter(now)){
+        for (var i : page1) {
+            if (i.getBeginDate().isBefore(now) && i.getEndDate().isAfter(now)) {
                 i.setStatus("已开课");
-            }
-            else if(i.getBeginDate().isAfter(now)){
+            } else if (i.getBeginDate().isAfter(now)) {
                 i.setStatus("未开课");
-            }
-            else{
+            } else {
                 i.setStatus("已结课");
             }
         }
-        log.info("返回的数据：{}",page1);
+        log.info("返回的数据：{}", page1);
         Page<Clazz> page = (Page<Clazz>) page1;
-        return new PageResult< Clazz>(page.getTotal(),page.getResult());
+        return new PageResult<Clazz>(page.getTotal(), page.getResult());
     }
 
     @Override
@@ -63,7 +61,7 @@ public class ClazzsImpl implements Clazzs {
         clazz.setUpdateTime(LocalDateTime.now());
 
         clazzsMapper.addClazzs(clazz);
-            log.info("操作成功");
+        log.info("操作成功");
     }
 
     @Override
@@ -71,20 +69,18 @@ public class ClazzsImpl implements Clazzs {
         PageHelper.startPage(empC.getPage(), empC.getPageSize());
         List<Clazz> page1 = clazzsMapper.selectAll(empC);
         LocalDate now = LocalDate.now();
-        for(var i: page1){
-            if(i.getBeginDate().isBefore(now)&&i.getEndDate().isAfter(now)){
+        for (var i : page1) {
+            if (i.getBeginDate().isBefore(now) && i.getEndDate().isAfter(now)) {
                 i.setStatus("已开课");
-            }
-            else if(i.getBeginDate().isAfter(now)){
+            } else if (i.getBeginDate().isAfter(now)) {
                 i.setStatus("未开课");
-            }
-            else{
+            } else {
                 i.setStatus("已结课");
             }
         }
-        log.info("返回的数据：{}",page1);
+        log.info("返回的数据：{}", page1);
         Page<Clazz> page = (Page<Clazz>) page1;
-        return new PageResult<Clazz>(page.getTotal(),page.getResult());
+        return new PageResult<Clazz>(page.getTotal(), page.getResult());
     }
 
     @Override

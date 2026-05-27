@@ -4,11 +4,12 @@ import com.java.pojo.Dept;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
+
 /*
-*
-* @Description: 部门Mapper
-*
-* */
+ *
+ * @Description: 部门Mapper
+ *
+ * */
 @Mapper
 public interface DeptMapper {
 

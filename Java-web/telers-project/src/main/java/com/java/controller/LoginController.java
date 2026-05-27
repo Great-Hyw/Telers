@@ -27,6 +27,7 @@ public class LoginController {
         log.info("员工登录：{}", emp);
         Emp emp1 = login.login(emp);
         if (emp1 != null) {//登录成功
+            log.info(String.valueOf(emp1));
             return Result.susses(emp1);
         }
         return Result.error("用户名或密码错误");

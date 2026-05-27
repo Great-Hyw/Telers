@@ -7,16 +7,15 @@ import java.util.List;
 
 
 /*
-*
-* @Description: 员工工作经历Mapper
-* */
+ *
+ * @Description: 员工工作经历Mapper
+ * */
 @Mapper
 public interface EmpExprMapper {
 
     void addEmpExpr(List<EmpExpr> exprList);
 
     void daleteEmpExpr(List<Integer> ids);
-
 
 
 }

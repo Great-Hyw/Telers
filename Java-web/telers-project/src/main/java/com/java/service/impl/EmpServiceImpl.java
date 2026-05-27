@@ -14,18 +14,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 
 /*
-*
-* @Description:员工业务实现类
-*
-* */
+ *
+ * @Description:员工业务实现类
+ *
+ * */
 @Service
 public class EmpServiceImpl implements EmpService {
     @Autowired
@@ -33,7 +31,12 @@ public class EmpServiceImpl implements EmpService {
     @Autowired
     private EmpExprMapper empExprMapper;
 
-    @Transactional(rollbackFor = {Exception.class})
+
+    /*
+     * 添加员工
+     *
+     * 0*/
+    @Transactional(rollbackFor = {Exception.class})//添加事务
     @Override
     public void addEmp(Emp emp) {
         emp.setCreateTime(LocalDateTime.now());
@@ -46,6 +49,11 @@ public class EmpServiceImpl implements EmpService {
         }
     }
 
+
+    /*
+     * 查询员工
+     * 分页查询
+     * */
     @Override
     public PageResult<Emp> page(EmpC empC) {
         PageHelper.startPage(empC.getPage(), empC.getPageSize());
@@ -55,6 +63,11 @@ public class EmpServiceImpl implements EmpService {
 
     }
 
+    /*
+     *
+     * 删除员工
+     *
+     * */
     @Transactional(rollbackFor = {Exception.class})
     @Override
     public void deleteEmp(List<Integer> ids) {
@@ -63,12 +76,24 @@ public class EmpServiceImpl implements EmpService {
 
     }
 
+
+    /*
+     *
+     * 根据id查询员工
+     *
+     * */
     @Override
     public Emp selectEmp(Integer id) {
 
         return empMapper.select(id);
     }
 
+
+    /*
+     *
+     * 修改员工信息
+     *
+     * */
     @Override
     public void update(Emp emp) {
         emp.setUpdateTime(LocalDateTime.now());

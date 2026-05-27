@@ -11,9 +11,9 @@ import java.util.List;
 
 
 /*
-*
-* @Description: 部门业务实现类
-* */
+ *
+ * @Description: 部门业务实现类
+ * */
 @Service
 public class DeptServiceImpl implements DeptService {
     @Autowired
@@ -45,6 +45,7 @@ public class DeptServiceImpl implements DeptService {
         dept.setUpdateTime(LocalDateTime.now());
         deptMapper.update(dept);
     }
+
     @Override
     public Dept goInfo(Integer id) {
 

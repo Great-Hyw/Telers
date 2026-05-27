@@ -8,9 +8,9 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 /*
-* @Description: 班级Mapper
-*
-* */
+ * @Description: 班级Mapper
+ *
+ * */
 @Mapper
 public interface ClazzsMapper {
 
@@ -25,5 +25,5 @@ public interface ClazzsMapper {
 
     void updateClazz(Clazz clazz);
 
-    Clazz selectClazz( Integer id);
+    Clazz selectClazz(Integer id);
 }

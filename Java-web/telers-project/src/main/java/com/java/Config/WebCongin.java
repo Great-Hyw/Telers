@@ -8,10 +8,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 /*
-*
-* @Description: 拦截器配置类
-*
-* */
+ *
+ * @Description: 拦截器配置类
+ *
+ * */
 @Configuration
 public class WebCongin implements WebMvcConfigurer {
 

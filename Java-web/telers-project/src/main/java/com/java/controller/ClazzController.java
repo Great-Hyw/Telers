@@ -45,11 +45,12 @@ public class ClazzController {
 
         return Result.susses();
     }
-/*
-*
-*根据id查询班级
-*
-* */
+
+    /*
+     *
+     *根据id查询班级
+     *
+     * */
     @GetMapping("/{id}")
     public Result selectClazz(@PathVariable("id") Integer id) {
 
@@ -57,11 +58,12 @@ public class ClazzController {
 
         return Result.susses(clazz);
     }
-/*
-*
-* 添加班级
-*
-* */
+
+    /*
+     *
+     * 添加班级
+     *
+     * */
     @PostMapping
     public Result addClazzs(@RequestBody Clazz clazz) {
 
@@ -72,19 +74,20 @@ public class ClazzController {
     }
 
     /*
-    *
-    * 查询所有班级
-    * */
+     *
+     * 查询所有班级
+     * */
     @GetMapping("/list")
     public Result SelectAll(EmpC empC) {
         PageResult<Clazz> clazzPageResult = clazzs.selectAll(empC);
         return Result.susses(clazzPageResult);
     }
-/*
-*
-* 修改班级
-*
-* */
+
+    /*
+     *
+     * 修改班级
+     *
+     * */
     @PutMapping
     public Result updateClazz(@RequestBody Clazz clazz) {
         clazzs.updateClazz(clazz);

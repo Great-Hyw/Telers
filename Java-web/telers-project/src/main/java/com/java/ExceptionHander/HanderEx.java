@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 
 /*
-* 全局异常处理
-*
-* */
+ * 全局异常处理
+ *
+ * */
 @Slf4j
 @RestControllerAdvice
 public class HanderEx {
@@ -19,18 +19,18 @@ public class HanderEx {
         e.printStackTrace();
         return Result.error("服务端有异常");
     }
-    /*
-    *
-    * 添加全局处理重复添加异常
-    * */
-    @ExceptionHandler(DuplicateKeyException.class)
-    public Result handleReException(DuplicateKeyException e)
-    {
 
-        String mess=e.getMessage();
+    /*
+     *
+     * 添加全局处理重复添加异常
+     * */
+    @ExceptionHandler(DuplicateKeyException.class)
+    public Result handleReException(DuplicateKeyException e) {
+
+        String mess = e.getMessage();
         String message = mess.substring(mess.indexOf("Duplicate entry"));
         String[] s = message.split(" ");
-        log.error("服务器出现异常"+message);
-        return Result.error(s[2]+"已存在");
+        log.error("服务器出现异常" + message);
+        return Result.error(s[2] + "已存在");
     }
 }

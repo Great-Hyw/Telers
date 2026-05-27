@@ -2,7 +2,6 @@ package com.java.service;
 
 
 import com.java.pojo.Dept;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
