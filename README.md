@@ -39,7 +39,7 @@ labels: 'documentation'
 - **权限认证**：JWT (Json Web Token)
 - **日志处理**：SLF4J (Lombok `@Slf4j`)
 - **依赖注入**：Spring Context
-
+-**日志记录**：Spring AOP
 ---
 
 ## 🧩 核心功能模块
